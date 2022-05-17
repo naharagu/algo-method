@@ -6,29 +6,27 @@ int main()
 	int	n;
 	cin >> n;
 
-	vector<int> a(n);
-	vector<int> nums(9);
 	vector<int> result(9);
-	for (int k = 1; k <= 9; k++)
-		nums[k] = k;
-	for (int k = 1; k <= 9; k++)
+	for (int k = 0; k < 9; k++)
 		result[k] = 0;
+
+	vector<int> a(n);
 	for (int i = 0; i < n; i++)
 	{
 		cin >> a[i];
-		for (int k = 1; k <= 9; k++)
+		for (int k = 0; k < 9; k++)
 		{
-			if (a[i] == nums[k])
+			if (a[i] == k + 1)
 				result[k]++;
 		}
 	}
-	int count = 0;
-	int max = 0;
-	for (int k = 1; k <= 9; k++)
+	int index = 0;
+	for (int k = 0; k < 9; k++)
 	{
-		if (count < result[k])
-			max = result[k];
+		if (result[k] > result[index])
+			index = k;
 	}
-	cout << max << endl;
+	index++;
+	cout << index << endl;
 	return 0;
 }
